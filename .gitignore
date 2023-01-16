@@ -1,0 +1,7 @@
+.direnv/*
+__pycache__/*
+venv/*
+.env
+.envrc
+dist/*
+build/*
