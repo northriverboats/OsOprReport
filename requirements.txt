@@ -1,9 +1,11 @@
 altgraph==0.16.1
 bgtunnel==0.4.1
 Click==7.0
+emailer @ git+https://github.com/northriverboats/emailer.git@eefaf8155cb4bcc2f108f9ac28615d57bbe2acb1
 et-xmlfile==1.0.1
 jdcal==1.4.1
 mailer==0.8.1
+mysql-tunnel @ git+https://github.com/northriverboats/mysql-tunnel@fb06b6f3949890a0cb44435dc55de4ffcd6cdc71
 mysqlclient==1.3.13
 openpyxl==2.6.4
 pkg-resources==0.0.0
