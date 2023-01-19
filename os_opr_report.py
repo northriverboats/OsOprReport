@@ -8,7 +8,7 @@ from openpyxl import Workbook, load_workbook
 from datetime import datetime, timedelta
 from hashlib import md5
 from titlecase import titlecase
-from emailer.emailer import Email
+from emailer.emailer import mail_results
 from mysql_tunnel.mysql_tunnel import TunnelSQL
 from dotenv import load_dotenv
 from pprint import pprint
@@ -126,24 +126,6 @@ def resolve_text(env_var, default):
 
 def resolve_int(env_var, default):
     return int(resolve_text(env_var, default))
-
-def mail_results(subject, body, attachment=None):
-    mFrom = os.getenv('MAIL_FROM')
-    mTo = os.getenv('MAIL_TO')
-    mCc = os.getenv('MAIL_CC')
-    m = Email(os.getenv('MAIL_SERVER'))
-    m.setFrom(mFrom)
-    for email in mTo.split(','):
-        m.addRecipient(email)
-    for email in mCc.split(','):
-        m.addCC(email)
-
-    m.setSubject(subject)
-    m.setTextBody("You should not see this text in a MIME aware reader")
-    m.setHtmlBody(body)
-    if (attachment):
-        m.addAttachment(attachment)
-    m.send()
 
 
 def fetch_oprs(report_start, report_date):
