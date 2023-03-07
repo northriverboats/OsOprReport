@@ -199,7 +199,7 @@ def dump_oprs(oprs):
 @click.command()
 @click.option('--debug', '-d', is_flag=True, help='show debug output')
 @click.option('--verbose', '-v', default=1, type=int, help='verbosity level 0-3')
-@click.option('--interval', type=int, help='how may days does report cover')
+@click.option('--interval', default=0, type=int, help='how may days does report cover')
 @click.option('--date', default='', type=str, help='date in yyyy-mm-dd format')
 @click.option('--title', default='', type=str, help='Title of report for emailing')
 @click.option('--dump', is_flag=True, help='dump to screen do not email')
@@ -214,9 +214,11 @@ def main(debug, verbose, interval, date, title, dump):
         click.echo(ctx.get_help())
         ctx.exit()
 
+
     debug = resolve_flag('DEBUG', debug)
     verbosity = resolve_int('VERBOSE', verbose)
-    interval = resolve_int('INTERVAL', interval)
+    if not interval:
+        interval = resolve_int('INTERVAL', interval)
     date = resolve_text('DATE', date)
     title = resolve_text('DATE', title)
     dump = resolve_flag('DUMP', dump)
