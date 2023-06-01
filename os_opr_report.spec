@@ -8,6 +8,7 @@ a = Analysis(['os_opr_report.py'],
              binaries=[],
              datas=[
                  ('.env','.'),
+                 ('os_sales_report.xlsx','.'),
              ],
              hiddenimports=[],
              hookspath=[],
